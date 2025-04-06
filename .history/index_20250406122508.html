@@ -132,30 +132,30 @@
 
 
     <hr style="width: 60%; margin-top: 40px; border: none; border-top: 1px dashed #ccc;">
-    <footer style="position: relative; padding-bottom: 30px;">
+    <footer>
         <p>
             Contact person: <strong>Prof. Weiran Li</strong> (E-mail: 
             <a href="mailto:weiranli@hku.hk">weiranli@hku.hk</a>)<br>
             Department of Earth Sciences, The University of Hong Kong
         </p>
+        
+        <div style="margin-top: 10px; font-size: 0.9em; color: #999;">
+        Visitors: <span id="visitor-count">Loading...</span>
+        </div>
 
+        <script>
+        fetch('/api/visit.php')  // ✅ 保持路径一致
+            .then(res => res.json())
+            .then(data => {
+            document.getElementById('visitor-count').innerText = data.visits;
+            })
+            .catch(err => {
+            document.getElementById('visitor-count').innerText = "Unavailable";
+            console.error(err);
+            });
+        </script>
     </footer>
 
-    <div style="position: fixed; bottom: 10px; left: 10px; font-size: 1em; color: #999; z-index: 1000;">
-    Visitors: <span id="visitor-count">Loading...</span>
-    </div>
-
-    <script>
-    fetch('/api/visit.php')  // ✅ 保持路径一致
-        .then(res => res.json())
-        .then(data => {
-        document.getElementById('visitor-count').innerText = data.visits;
-        })
-        .catch(err => {
-        document.getElementById('visitor-count').innerText = "Unavailable";
-        console.error(err);
-        });
-    </script>
 
 </body>
 

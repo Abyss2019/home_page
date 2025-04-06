@@ -139,23 +139,23 @@
             Department of Earth Sciences, The University of Hong Kong
         </p>
 
+        <div style="position: fixed; bottom: 10px; left: 10px; font-size: 0.9em; color: #999; z-index: 1000;">
+        Visitors: <span id="visitor-count">Loading...</span>
+        </div>
+
+        <script>
+        fetch('/api/visit.php')  // ✅ 保持路径一致
+            .then(res => res.json())
+            .then(data => {
+            document.getElementById('visitor-count').innerText = data.visits;
+            })
+            .catch(err => {
+            document.getElementById('visitor-count').innerText = "Unavailable";
+            console.error(err);
+            });
+        </script>
     </footer>
 
-    <div style="position: fixed; bottom: 10px; left: 10px; font-size: 1em; color: #999; z-index: 1000;">
-    Visitors: <span id="visitor-count">Loading...</span>
-    </div>
-
-    <script>
-    fetch('/api/visit.php')  // ✅ 保持路径一致
-        .then(res => res.json())
-        .then(data => {
-        document.getElementById('visitor-count').innerText = data.visits;
-        })
-        .catch(err => {
-        document.getElementById('visitor-count').innerText = "Unavailable";
-        console.error(err);
-        });
-    </script>
 
 </body>
 
