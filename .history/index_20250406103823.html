@@ -48,7 +48,7 @@
         padding: 20px 30px;
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        max-width: 800px;
+        max-width: 1000px;
         }
 
         /* .indent p {
@@ -59,10 +59,8 @@
 
         .buttons-container {
             display: flex;
-            gap: 60px;
-            justify-content: justify;
+            gap: 30px;
             margin: 20px 0;
-            margin-top: 50px;
         }
 
         .button {
@@ -85,14 +83,22 @@
           transform: scale(1.05);
         }
 
-
+        footer {
+        margin-top: 40px;
+        font-size: 0.95em;
+        color: #666;
+        text-align: center;
+        padding: 20px;
+        /* background-color: #f8f8ff; */
+        /* border-top: 1px solid #ccc; */
+        line-height: 1.6;
+        }
         footer {
         font-size: 0.9em;
-        /* margin-top: 40px; */
-        /* padding: 15px 0; */
+        margin-top: 40px;
+        padding: 15px 0;
         text-align: center;
         color: #666;
-        line-height: 1.4;
         }
 
         footer a {
@@ -112,27 +118,27 @@
         <h2>Department of Earth Sciences, The University of Hong Kong</h2>
     </header>
 
-
-    <div class="intro indent">
-    <p>Welcome to the VRockLab calculation website!</p>
-    <p>This website archives algorithms we developed for petrological studies, including a few online calculators for apatite ("ApThermo", "ApTimer") and python codes for conducting other calculations ("Python code").</p>
-    <p>By clicking the buttons below, you will be directed to a new page for calculations. Please cite these software/codes when publishing your work.</p>
+    <div class="intro">
+        <div class="intro indent">
+        <p>Welcome to the VRockLab calculation website!</p>
+        <p>This website archives algorithms we developed for petrological studies, including a few online calculators for apatite ("ApThermo", "ApTimer") and python codes for conducting other calculations ("Python code").</p>
+        <p>By clicking the buttons below, you will be directed to a new page for calculations. Please cite these software/codes when publishing your work.</p>
+        </div>
     </div>
-
 
     <div class="buttons-container">
         <a href="https://vrocklab.hku.hk/ApThermo/" target="_blank" class="button">ApThermo</a>
         <a href="https://vrocklab.hku.hk/ApTimer/" target="_blank" class="button">ApTimer</a>
         <a href="https://vrocklab.hku.hk/python-code/" target="_blank" class="button">Python Code</a>
     </div>
-    <p>
-        Find out more about the VRockLab: 
-        <a href="https://weiranli.wixsite.com/alex" target="_blank">https://weiranli.wixsite.com/alex</a>
-    </p>
 
+    <hr style="width: 80%; margin-top: 40px; border: none; border-top: 1px dashed #ccc;">
 
-    <hr style="width: 60%; margin-top: 40px; border: none; border-top: 1px dashed #ccc;">
     <footer>
+        <p>
+            Find out more about the VRockLab: 
+            <a href="https://weiranli.wixsite.com/alex" target="_blank">https://weiranli.wixsite.com/alex</a>
+        </p>
         <p>
             Contact person: <strong>Prof. Weiran Li</strong> (E-mail: 
             <a href="mailto:weiranli@hku.hk">weiranli@hku.hk</a>)<br>
