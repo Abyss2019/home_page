@@ -106,12 +106,7 @@
   <div class="citation-card">
     <h3>pyClosureT</h3>
     <p><strong>Author:</strong> Weiran Li</p>
-
-    <p><strong>Citation:</strong> v1.0, DOI: 
-    <!-- <a href="#" onclick="showForm('https://doi.org/10.5281/zenodo.15015271')" style="color:#5a3e8a; font-weight: bold;">10.5281/zenodo.15015271</a> -->
-    <a href="https://doi.org/10.5281/zenodo.15015271" target="_blank">10.5281/zenodo.15015271</a>
-    </p>
-
+    <p><strong>Citation:</strong> v1.0, DOI: <a href="#" onclick="showForm('https://doi.org/10.5281/zenodo.15015271')" style="color:#5a3e8a; font-weight: bold;">10.5281/zenodo.15015271</a></p>
     <p>See detail in <strong>Li W-R &amp; Costa F (2025)</strong> Leveraging radioisotope geochronology and diffusion chronometry to trace the thermal evolution of magmatic systems. National Science Review.</p>
   </div>
   <!-- 以后可以在这里添加更多引用卡片 -->
@@ -126,28 +121,23 @@
   </div>
 
   <!-- 弹出表单 -->
-  <div id="popup" style="display:none; position:fixed; top:15%; left:50%; transform:translateX(-50%);
-    background:#fff; padding:30px 40px; border-radius:12px;
-    box-shadow:0 0 20px rgba(0,0,0,0.2); z-index:1000; max-width: 400px; width: 60%;">
-    
-    <div style="text-align: right;">
-      <span onclick="closeForm()" style="cursor: pointer; font-size: 1.5em; color: #888;">&times;</span>
+  <div id="popup" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%);
+    background:#fff; padding:20px 30px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.3); z-index:1000; max-width: 400px;">
+      <div style="text-align: right;">
+      <span onclick="closeForm()" style="cursor: pointer; font-size: 1.2em;">&times;</span>
     </div>
-    
-    <h3 style="margin-top: 0; font-size: 1.5em; color: #5a3e8a;">Let us know you!</h3>
+    <h3 style="margin-top:0;">Let us know you!</h3>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" style="width:100%;"><br><br>
 
-    <label for="email" style="font-size: 1.05em;">Email:</label><br>
-    <input type="email" id="email" style="width:100%; font-size:1em; padding: 8px; margin-bottom: 16px;"><br>
-
-    <label for="affiliation" style="font-size: 1.05em;">Affiliation:</label><br>
-    <input type="text" id="affiliation" style="width:100%; font-size:1em; padding: 8px; margin-bottom: 20px;"><br>
+    <label for="affiliation">Affiliation:</label><br>
+    <input type="text" id="affiliation" style="width:100%;"><br><br>
 
     <div style="text-align: right;">
-      <button onclick="skipForm()" style="margin-right: 12px; padding: 8px 16px;">Skip</button>
-      <button onclick="submitForm()" style="padding: 8px 16px;">Submit</button>
+      <button onclick="skipForm()" style="margin-right:10px;">Skip</button>
+      <button onclick="submitForm()">Submit</button>
     </div>
   </div>
-
 
   
 
