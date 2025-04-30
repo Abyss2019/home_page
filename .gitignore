@@ -50,3 +50,9 @@ __pycache__/
 *.zip
 *.tar.gz
 *.7z
+
+
+# excel files and csv files
+*.csv
+*.xlsx
+*.xls
