@@ -1,0 +1,52 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# Build output
+dist/
+build/
+out/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Python-related files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+*.pytest_cache/
+
+# Local History
+.history/
+
+# Other
+*.zip
+*.tar.gz
+*.7z
