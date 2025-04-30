@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VROCKLAB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* background-image: url('./bg.webp'); */
+            background: linear-gradient(to bottom, #f0f8ff, #e6e6fa);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            /* margin-bottom: 30px; */
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            font-family: 'Georgia', serif;
+            text-shadow: 2px 2px 5px #aaa;
+            color: #5a3e8a;
+        }
+
+
+
+        header h2 {
+            font-size: 1.2em;
+            margin-top: 5px;
+            color: #555;
+        }
+
+        .intro {
+        font-size: 1.1em;
+        line-height: 1.5;
+        text-align: justify;
+        color: #444;
+        /* background-color: #f2f6ff; */
+        padding: 20px 30px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        max-width: 800px;
+        }
+
+        /* .indent p {
+        text-indent: 2em;
+        margin-bottom: 1em;
+        } */
+
+
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 100px;
+            background-color: #4682b4;
+            border-radius: 10px;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 1px 1px 2px #000;
+            
+        }
+        .button:hover{
+          transform: scale(1.05);
+        }
+
+
+        footer {
+        font-size: 0.9em;
+        margin-top: 40px;
+        padding: 15px 0;
+        text-align: center;
+        color: #666;
+        line-height: 1.4;
+        }
+
+        footer a {
+        color: #5a3e8a;
+        text-decoration: none;
+        font-weight: bold;
+        }
+
+        footer a:hover {
+        text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VROCKLAB</h1>
+        <h2>Department of Earth Sciences, The University of Hong Kong</h2>
+    </header>
+
+
+    <div class="intro indent">
+    <p>Welcome to the VRockLab calculation website!</p>
+    <p>This website archives algorithms we developed for petrological studies, including a few online calculators for apatite ("ApThermo", "ApTimer") and python codes for conducting other calculations ("Python code").</p>
+    <p>By clicking the buttons below, you will be directed to a new page for calculations. Please cite these software/codes when publishing your work.</p>
+    </div>
+
+
+    <div class="buttons-container">
+        <a href="https://vrocklab.hku.hk/ApThermo/" target="_blank" class="button">ApThermo</a>
+        <a href="https://vrocklab.hku.hk/ApTimer/" target="_blank" class="button">ApTimer</a>
+        <a href="https://vrocklab.hku.hk/python-code/" target="_blank" class="button">Python Code</a>
+    </div>
+
+    <hr style="width: 80%; margin-top: 40px; border: none; border-top: 1px dashed #ccc;">
+
+    <footer>
+        <p>
+            Find out more about the VRockLab: 
+            <a href="https://weiranli.wixsite.com/alex" target="_blank">https://weiranli.wixsite.com/alex</a>
+        </p>
+        <p>
+            Contact person: <strong>Prof. Weiran Li</strong> (E-mail: 
+            <a href="mailto:weiranli@hku.hk">weiranli@hku.hk</a>)<br>
+            Department of Earth Sciences, The University of Hong Kong
+        </p>
+    </footer>
+</body>
+</html>

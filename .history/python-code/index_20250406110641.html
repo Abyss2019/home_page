@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Code - VROCKLAB</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #f0f8ff, #e6e6fa);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      /* margin-bottom: 10px; */
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      font-family: 'Georgia', serif;
+      text-shadow: 2px 2px 5px #aaa;
+      color: #5a3e8a;
+    }
+
+    header h2 {
+      font-size: 1.2em;
+      margin-top: 5px;
+      color: #555;
+    }
+
+    .intro, .content {
+      font-size: 1em;
+      margin: 20px 0;
+      text-align: center;
+      color: #555;
+      max-width: 800px;
+      margin-bottom: 40px;
+    }
+
+    .citation-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      width: 50%;
+    }
+
+    .citation-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px 0;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      line-height: 1.5;
+    }
+
+    .citation-card h3 {
+      margin-top: 0;
+      color: #5a3e8a;
+      font-style: italic;
+    }
+
+
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+    }
+
+    footer a {
+      color: #5a3e8a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Python Code</h1>
+    <!-- <h2>Compiled Python Codes for Petrological Studies</h2> -->
+  </header>
+
+  <div class="intro">
+    This page compiles the python codes we developed for petrological studies. Please cite the code repository and paper listed below.
+  </div>
+
+
+  <div class="citation-container">
+  <div class="citation-card">
+    <h3>pyClosureT</h3>
+    <p><strong>Author:</strong> Weiran Li</p>
+    <p><strong>Citation:</strong> v1.0, DOI: <a href="#" onclick="showForm('https://doi.org/10.5281/zenodo.15015271')" style="color:#5a3e8a; font-weight: bold;">10.5281/zenodo.15015271</a></p>
+    <p>See detail in <strong>Li W-R &amp; Costa F (2025)</strong> Leveraging radioisotope geochronology and diffusion chronometry to trace the thermal evolution of magmatic systems. National Science Review.</p>
+  </div>
+  <!-- 以后可以在这里添加更多引用卡片 -->
+  <!--
+  <div class="citation-card">
+    <h3>其他引用标题</h3>
+    <p><strong>Author:</strong> ...</p>
+    <p><strong>Citation:</strong> ...</p>
+    <p>...</p>
+  </div>
+  -->
+  </div>
+
+  <footer>
+    <a href="https://vrocklab.hku.hk/">Back to Home</a>
+  </footer>
+</body>
+</html>

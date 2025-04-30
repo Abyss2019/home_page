@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="vrocklab-doi-form.js"></script>
+  <title>Python Code - VROCKLAB</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #f0f8ff, #e6e6fa);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      /* margin-bottom: 10px; */
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      font-family: 'Georgia', serif;
+      text-shadow: 2px 2px 5px #aaa;
+      color: #5a3e8a;
+    }
+
+    header h2 {
+      font-size: 1.2em;
+      margin-top: 5px;
+      color: #555;
+    }
+
+    .intro, .content {
+      font-size: 1em;
+      margin: 20px 0;
+      text-align: center;
+      color: #555;
+      max-width: 800px;
+      margin-bottom: 40px;
+    }
+
+    .citation-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      width: 50%;
+    }
+
+    .citation-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px 0;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      line-height: 1.5;
+    }
+
+    .citation-card h3 {
+      margin-top: 0;
+      color: #5a3e8a;
+      font-style: italic;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+    }
+
+    footer a {
+      color: #5a3e8a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 注册表单样式 */
+    .register-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .register-form {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .register-form h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #34495e;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .register-form button {
+      width: 100%;
+      padding: 10px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .register-form button:hover {
+      background: #2980b9;
+    }
+
+    .main-content {
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- 注册表单 -->
+  <div class="register-container" id="registerContainer">
+    <div class="register-form">
+      <h2>用户注册</h2>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="username">用户名</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="email">电子邮箱</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">密码</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">电话号码</label>
+          <input type="text" id="phone" name="phone" required>
+        </div>
+        <button type="submit">注册</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 主要内容 -->
+  <div class="main-content" id="mainContent">
+    <header>
+      <h1>Python Code</h1>
+      <!-- <h2>Compiled Python Codes for Petrological Studies</h2> -->
+    </header>
+
+    <div class="intro">
+      This page compiles the python codes we developed for petrological studies. Please cite the code repository and paper listed below.
+    </div>
+
+    <div class="citation-container">
+      <div class="citation-card">
+        <h3>pyClosureT</h3>
+        <p><strong>Author:</strong> Weiran Li</p>
+        <p><strong>Citation:</strong> v1.0, DOI: 
+          <a href="#" onclick="showForm('https://doi.org/10.5281/zenodo.15015271')" style="color:#5a3e8a; font-weight: bold;">10.5281/zenodo.15015271</a>
+        </p>
+        <p>See detail in <strong>Li W-R &amp; Costa F (2025)</strong> Leveraging radioisotope geochronology and diffusion chronometry to trace the thermal evolution of magmatic systems. National Science Review.</p>
+      </div>
+      <!-- 以后可以在这里添加更多引用卡片 -->
+      <!--
+      <div class="citation-card">
+        <h3>其他引用标题</h3>
+        <p><strong>Author:</strong> ...</p>
+        <p><strong>Citation:</strong> ...</p>
+        <p>...</p>
+      </div>
+      -->
+    </div>
+
+    <!-- 弹出表单 -->
+    <div id="popup" style="display:none; position:fixed; top:15%; left:50%; transform:translateX(-50%);
+      background:#fff; padding:30px 40px; border-radius:12px;
+      box-shadow:0 0 20px rgba(0,0,0,0.2); z-index:1000; max-width: 400px; width: 60%;">
+      
+      <div style="text-align: right;">
+        <span onclick="closeForm()" style="cursor: pointer; font-size: 1.5em; color: #888;">&times;</span>
+      </div>
+      
+      <h3 style="margin-top: 0; font-size: 1.5em; color: #5a3e8a;">Let us know you!</h3>
+
+      <label for="email" style="font-size: 1.05em;">Email:</label><br>
+      <input type="email" id="email" style="width:100%; font-size:1em; padding: 8px; margin-bottom: 16px;"><br>
+
+      <label for="affiliation" style="font-size: 1.05em;">Affiliation:</label><br>
+      <input type="text" id="affiliation" style="width:100%; font-size:1em; padding: 8px; margin-bottom: 20px;"><br>
+
+      <div style="text-align: right;">
+        <button onclick="skipForm()" style="margin-right: 12px; padding: 8px 16px;">Skip</button>
+        <button onclick="submitForm()" style="padding: 8px 16px;">Submit</button>
+      </div>
+    </div>
+
+    <footer>
+      <a href="https://vrocklab.hku.hk/">Back to Home</a>
+    </footer>
+  </div>
+
+  <div style="position: fixed; bottom: 10px; left: 10px; font-size: 1em; color: #999; z-index: 1000;">
+    Visitors: <span id="visitor-count">Loading...</span>
+  </div>
+
+  <script>
+    // 检查是否已经注册
+    function checkRegistration() {
+      const isRegistered = localStorage.getItem('isRegistered');
+      if (isRegistered === 'true') {
+        document.getElementById('registerContainer').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+      }
+    }
+
+    // 页面加载时检查注册状态
+    window.onload = checkRegistration;
+
+    // 处理注册表单提交
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      
+      fetch('../process_register.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        if(data.includes('成功')) {
+          // 注册成功，保存状态并显示主内容
+          localStorage.setItem('isRegistered', 'true');
+          document.getElementById('registerContainer').style.display = 'none';
+          document.getElementById('mainContent').style.display = 'block';
+        } else {
+          alert(data);
+        }
+      })
+      .catch(error => {
+        alert('注册失败，请稍后重试');
+      });
+    });
+
+    // 访问计数器
+    fetch('/api/visit.php')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('visitor-count').innerText = data.visits;
+      })
+      .catch(err => {
+        document.getElementById('visitor-count').innerText = "Unavailable";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
