@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$dbname = 'user_registration';
-$username = 'root';
-$password = '';
+$db   = 'vrocklab';
+$user = 'vrockuser';
+$pass = 'VRockLabHKU2025';
 
 try {
     // 首先尝试连接MySQL服务器
