@@ -39,3 +39,18 @@ function submitForm() {
     console.error(err);
   });
 }
+
+
+function skipForm() {
+  window.open(targetDOI, "_blank");
+  closeForm();
+}
+
+function closeForm() {
+  document.getElementById("popup").style.display = "none";
+}
+
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
