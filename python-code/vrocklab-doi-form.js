@@ -20,7 +20,7 @@ function submitForm() {
   }
 
   // ✅ 向 save_form.php 发送数据
-  fetch('/api/save_form.php', {
+  fetch('api/save_form.php', {
     method: 'POST',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, affiliation })

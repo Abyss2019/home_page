@@ -35,12 +35,12 @@ fclose($fp);
 // 成功响应
 echo json_encode(["status" => "success"]);
 
-var_dump($file);
+// var_dump($file);
 
-if (!isset($data['email']) || !isset($data['affiliation'])) {
-    var_dump($data);
-    http_response_code(400);
-    echo json_encode(["status" => "error", "message" => "Missing email or affiliation"]);
-    exit;
-}
+// if (!isset($data['email']) || !isset($data['affiliation'])) {
+//     var_dump($data);
+//     http_response_code(400);
+//     echo json_encode(["status" => "error", "message" => "Missing email or affiliation"]);
+//     exit;
+// }
 ?>
