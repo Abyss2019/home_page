@@ -21,7 +21,7 @@ function submitForm() {
     return;
   }
 
-  const url = "api/save_form.php";
+  const url = "../api/save_form.php";
   console.log(">>> fetch URL:", url);  // 调试：请求地址
 
   fetch(url, {
