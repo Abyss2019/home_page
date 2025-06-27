@@ -5,21 +5,22 @@
     <title>VROCKLAB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px 0;
-            padding: 0;
-            /* background-image: url('./bg.webp'); */
-            background: linear-gradient(to bottom,  #FFF9CA, #ffb380);
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* justify-content: center; */
-            min-height: 100vh;
-            /* font-size: 1em; */
+        font-family: Arial, sans-serif;
+        margin: 20px 0;
+        padding: 0 20px; 
+        background: linear-gradient(to bottom, #FFF9CA, #ffb380);
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch ;
+        padding: 20px;
+        min-height: 100vh;
+
         }
-        
+
+
 
         header {
             text-align: center;
@@ -56,6 +57,7 @@
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(183, 161, 127, 0.504);
         max-width: 800px;
+        margin:0 auto;
         }
 
         /* .indent p {
@@ -67,10 +69,16 @@
         .buttons-container {
             display: flex;
             gap: 60px;
-            justify-content: justify;
+            align-items: center;
+            justify-content: center;
             margin: 20px 0;
             margin-top: 50px;
+            /* flex-direction: column; */
+            padding: 20px;
+            overflow-x: auto;
+            margin:0 auto;
         }
+        
 
         .button {
             display: flex;
@@ -140,14 +148,14 @@
         <a href="https://vrocklab.hku.hk/ApTimer/" target="_blank" class="button">ApTimer</a>
         <a href="https://vrocklab.hku.hk/python-code/" target="_blank" class="button">Python Code</a>
     </div>
-    <p>
+    <p  style="position: relative; padding-bottom: 30px; text-align: center;">
         Find out more about the VRockLab: 
         <a href="https://weiranli.wixsite.com/alex" target="_blank">https://weiranli.wixsite.com/alex</a>
     </p>
 
 
-    <hr style="width: 60%; margin-top: 40px; border: none; border-top: 1px dashed #762000;">
-    <footer style="position: relative; padding-bottom: 30px;">
+    <hr style="width: 60%; margin-top: 40px; border: none; border-top: 1px dashed #762000; ">
+    <footer style="position: relative; padding-bottom: 30px; align-items: center;">
         <p>
             Contact person: <strong>Prof. Weiran Li</strong> (E-mail: 
             <a href="mailto:weiranli@hku.hk">weiranli@hku.hk</a>)<br>
@@ -171,7 +179,6 @@
         console.error(err);
         });
     </script>
-
 </body>
 
 </html>
