@@ -56,3 +56,6 @@ __pycache__/
 *.csv
 *.xlsx
 *.xls
+
+# history
+.history/
