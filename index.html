@@ -66,39 +66,38 @@
         } */
 
 
-        .buttons-container {
-            display: flex;
-            gap: 60px;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-            margin-top: 50px;
-            /* flex-direction: column; */
-            padding: 20px;
-            overflow-x: auto;
+        /* 1. 让按钮行可以换行，并把间距也做成响应式 */
+        .buttons-container{
+            display:flex;
+            flex-wrap:wrap;                        /* 关键：允许换行 */
+            justify-content:center;                /* 宽度够时居中 */
+            gap:clamp(10px, 6vw, 60px);            /* 间距 10–60 px，随屏宽调 */
+            padding:20px;
+            overflow-x:auto;                       /* 只在极窄屏时才需要横向滚动 */
             margin:0 auto;
         }
-        
 
-        .button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 150px;
-            height: 100px;
-            background: linear-gradient(to bottom,  rgba(95, 105, 129, 0.5), rgba(22, 45, 80, 0.7));
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(118,31,0,0.2);
-            border: 2px solid #761F00;  
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-decoration: none;
-            text-shadow: 1px 1px 2px #898989;
-            transition: transform .1s, box-shadow .1s;
-            
+        /* 2. 让按钮随屏宽伸缩，并保持 3:2 的比例 */
+        .button{
+            width:clamp(75px, 25vw, 150px);       /* 最小 75px，最大 150px，中间 = 25vw */
+            aspect-ratio:3 / 2;                    /* 宽:高 = 3:2；自动算出高度 */
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            /* 其余原有样式保持不变 ↓ */
+            background:linear-gradient(to bottom, rgba(95, 105, 129, .5), rgba(22, 45, 80, .7));
+            border:2px solid #761F00;
+            border-radius:8px;
+            box-shadow:0 4px 8px rgba(118,31,0,.2);
+            color:#fff;
+            font-size:clamp(1rem, 1.8vw, 1.2rem);  /* 字体也自适应 */
+            font-weight:bold;
+            text-decoration:none;
+            text-shadow:1px 1px 2px #898989;
+            transition:transform .1s, box-shadow .1s;
         }
+
         .button:hover{
           transform: scale(1.05);
           /* background: rgba(255,255,255,0.5); */
