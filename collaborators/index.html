@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VRockLab — Collaborators' Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff9f4;      /* 背景色 */
+      --surface: #ffffff; /* 卡片底色 */
+      --text: #1b1b1b;    /* 正文文字 */
+      --muted: #6b7280;   /* 次级文字 */
+      --brand: #c35a27;   /* 主色：橙色 */
+      --brand-600: #a9491c;
+      /* --volc-orange:#ffe6d6; */
+      --sky-yellow:#fffae6;
+      --ml-blue:  #84b2ea;
+      --ml-blue-50:  #0e386c;
+      --ring: rgba(39, 91, 195, 0.35); /* 聚焦环颜色 */
+      --border: #e6e3df;  /* 边框色 */
+      --link: #1d4ed8;    /* 链接色 */
+      --maxw: 1100px;     /* 页面最大宽度 */
+      --radius: 16px;     /* 圆角 */
+      --shadow: 0 10px 25px rgba(27,27,27,0.06); /* 卡片阴影 */
+
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0f0f10;          /* 径向高光起始色（更深） */
+        --surface: #161617;     /* 卡片底色 */
+        --text: #e6e6e6;        /* 正文 */
+        --muted: #a3a3a3;       /* 次级文字 */
+        --brand: #e07a3a;       /* 主色：暖橙 */
+        --brand-600: #c8642c;
+        --sky-yellow: #15130c;  /* 上部更暗的暖黄基底 */
+        --volc-orange: #2a1a14; /* 下部更暗的火山橙基底 */
+
+        /* 导航与交互 */
+        --ml-blue: rgba(132,178,234,0.18); /* hover 背景的浅蓝薄雾感 */
+        --ml-blue-50: #b7d3ff;             /* 导航文字颜色（较亮） */
+        --link: #93c5fd;                   /* 全局链接色 */
+        --ring: rgba(132,178,234,0.35);    /* 焦点环 */
+
+        /* 边框与阴影 */
+        --border: #2a2a2b;
+        --shadow: 0 10px 25px rgba(0,0,0,0.5);
+      }
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+    .container{max-width:var(--maxw);margin:0 auto;padding:20px}
+    .top{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:14px 0}
+    a{text-decoration:none;color:inherit}
+    .back{color:#2563eb}
+    h1{margin:0;font-size:26px}
+    .toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}
+    input[type="search"], select{
+      padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text)
+    }
+    .grid{display:grid;gap:18px;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:10px}
+    @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.grid{grid-template-columns:1fr}}
+    .tool{
+      background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:8px
+    }
+    .tool h3{margin:4px 0}
+    .meta{font-size:13px;color:var(--muted)}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:2px 8px;border-radius:999px}
+    .actions{margin-top:auto;display:flex;gap:10px}
+    .btn{padding:10px 12px;border-radius:12px;border:1px solid var(--brand);background:var(--brand);color:white;font-weight:600}
+    .btn.outline{background:transparent;color:var(--brand)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top">
+      <h1>Collaborators' Tools</h1>
+      <a class="back" href="index.html" aria-label="Back to home">Home</a>
+    </div>
+    <p class="meta">Curated external software and datasets contributed by our collaborators. Verify licenses before redistribution.</p>
+
+    <div class="toolbar" role="search">
+      <input id="q" type="search" placeholder="Search by name or author" aria-label="Search tools" />
+      <select id="cat" aria-label="Filter by category">
+        <option value="">All categories</option>
+        <option>Thermobarometry</option>
+        <option>Diffusion</option>
+        <option>Geochemistry</option>
+        <option>Data utilities</option>
+      </select>
+      <select id="license" aria-label="Filter by license">
+        <option value="">All licenses</option>
+        <option>MIT</option>
+        <option>GPL-3.0</option>
+        <option>Apache-2.0</option>
+        <option>CC-BY</option>
+      </select>
+    </div>
+
+    <div id="grid" class="grid" aria-live="polite"></div>
+
+    <template id="card">
+      <article class="tool">
+        <h3 data-f="name"></h3>
+        <p data-f="desc"></p>
+        <div class="meta"><span data-f="author"></span> • <span data-f="version"></span></div>
+        <div class="tags" data-f="tags"></div>
+        <div class="actions">
+          <a class="btn" data-f="url" target="_blank" rel="noopener">Open</a>
+          <a class="btn outline" data-f="cite" target="_blank" rel="noopener">Cite/Docs</a>
+        </div>
+      </article>
+    </template>
+
+    <!-- 可替换为后端接口。此处用内联 JSON 做示例 -->
+    <script id="data" type="application/json">{
+      "items": [
+        {"name":"Geochemistrypi","desc":"Biotite-based barometer with updated calibrations.","author":"Zhang et al.","version":"v1.3","category":"Thermobarometry","license":"MIT","tags":["biotite","pressure"],"url":"https://example.com/btbaro","cite":"https://example.com/btbaro#cite"},
+      ]
+    }</script>
+
+    <script>
+      const data = JSON.parse(document.getElementById('data').textContent).items;
+      const grid = document.getElementById('grid');
+      const q = document.getElementById('q');
+      const cat = document.getElementById('cat');
+      const lic = document.getElementById('license');
+      const tpl = document.getElementById('card');
+
+      function render(){
+        grid.innerHTML='';
+        const kw = q.value.trim().toLowerCase();
+        const rows = data.filter(d =>
+          (!kw || (d.name.toLowerCase().includes(kw) || d.author.toLowerCase().includes(kw))) &&
+          (!cat.value || d.category===cat.value) &&
+          (!lic.value || d.license===lic.value)
+        );
+        rows.forEach(d => {
+          const node = tpl.content.cloneNode(true);
+          node.querySelector('[data-f="name"]').textContent = d.name;
+          node.querySelector('[data-f="desc"]').textContent = d.desc;
+          node.querySelector('[data-f="author"]').textContent = d.author;
+          node.querySelector('[data-f="version"]').textContent = d.version;
+          node.querySelector('[data-f="url"]').href = d.url;
+          node.querySelector('[data-f="cite"]').href = d.cite;
+          const tags = node.querySelector('[data-f="tags"]');
+          (d.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='tag'; s.textContent=t; tags.appendChild(s); });
+          grid.appendChild(node);
+        });
+        if(rows.length===0){ grid.innerHTML = '<p class="meta">No results.</p>'; }
+      }
+      render();
+      [q,cat,lic].forEach(el=> el.addEventListener('input', render));
+    </script>
+  </div>
+</body>
+</html>
