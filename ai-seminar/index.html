@@ -1,143 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Advances in AI for Earth Sciences and Beyond — Programme</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>RGC Hong Kong Postgraduate Seminar – AI for Earth Sciences</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    :root {
-      --bg: #0f1115;
-      --fg: #eaeaf0;
-      --muted: #b8bcc7;
-      --card: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.10);
-      --shadow: 0 10px 40px rgba(0,0,0,0.6);
-    }
-
-    body {
+    /* ===== 全局 ===== */
+    html, body {
       margin: 0;
-      background: var(--bg);
-      color: var(--fg);
+      padding: 0;
+      height: 100%;
+      background-color: #000;
       font-family: -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", Roboto, Helvetica, Arial,
-                   "Noto Sans", sans-serif;
-      text-align: center;
+                   "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #ffffff;
     }
 
-    header {
-      padding: 22px 16px 10px;
+    /* ===== 页面布局 ===== */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      text-align: center;   /* 全部居中 */
     }
 
-    h1 {
-      font-size: 1.55rem;
-      font-weight: 650;
-      margin: 0 0 10px;
-      line-height: 1.35;
+    /* ===== 标题区 ===== */
+    .title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 16px;
     }
 
-    .sub {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 1.5;
+    .subtitle {
+      font-size: 1.05rem;
+      color: #cccccc;
+      margin-bottom: 28px;
+      line-height: 1.6;
     }
 
-    .wrap {
-      max-width: 980px;
-      margin: 16px auto 32px;
-      padding: 0 16px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 14px 0 16px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--fg);
-      text-decoration: none;
+    .affiliation {
       font-size: 0.95rem;
-      line-height: 1;
-      transition: transform 0.08s ease, background 0.08s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .pdf-frame {
-      width: 100%;
-      height: 82vh;              /* 桌面默认高度 */
-      border: none;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      background: #1a1c22;       /* PDF 加载前的底色 */
-    }
-
-    /* 移动端：给更多高度，减少“工具栏占屏”带来的压缩感 */
-    @media (max-width: 600px) {
-      h1 { font-size: 1.25rem; }
-      .pdf-frame { height: 86vh; }
-    }
-
-    .fallback {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 0.92rem;
+      color: #aaaaaa;
       line-height: 1.5;
+      margin-bottom: 32px;
     }
 
-    .fallback a {
-      color: var(--fg);
-      text-decoration: underline;
+    /* ===== 下载按钮 ===== */
+    .download-btn {
+      display: inline-block;
+      margin-bottom: 24px;
+      padding: 10px 20px;
+      font-size: 0.95rem;
+      color: #ffffff;
+      text-decoration: none;
+      border: 1px solid #888;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    /* ===== PDF 嵌入 ===== */
+    .pdf-wrapper {
+      width: 100%;
+      height: 90vh;
+      margin-top: 12px;
+    }
+
+    .pdf-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;          /* 关键：无白框 */
+      background: transparent;
+    }
+
+    /* ===== 移动端 ===== */
+    @media (max-width: 768px) {
+      .title {
+        font-size: 1.5rem;
+      }
+      .pdf-wrapper {
+        height: 85vh;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>
-      RGC Hong Kong Postgraduate Research Seminar<br>
-      Advances in AI for Earth Sciences and Beyond
-    </h1>
-    <p class="sub">Programme & Rundown (PDF)</p>
-  </header>
+  <div class="page">
 
-  <main class="wrap">
-    <div class="actions">
-      <!-- 直接在新标签打开 -->
-      <a class="btn" href="Programme_Rundown.pdf" target="_blank" rel="noopener">
-        Open PDF in New Tab
-      </a>
-      <!-- 直接下载（浏览器可能仍会预览，这是正常的） -->
-      <a class="btn" href="Programme_Rundown.pdf" download>
-        Download PDF
-      </a>
+    <div class="title">
+      RGC Hong Kong Postgraduate Seminar  
+      <br>Advances in AI for Earth Sciences and Beyond
     </div>
 
-    <iframe
-      class="pdf-frame"
-      src="Programme_Rundown.pdf"
-      title="Programme Rundown PDF"
-      loading="lazy"
-    ></iframe>
+    <!-- <div class="subtitle">
+      29–30 January 2026
+    </div> -->
 
-    <div class="fallback">
-      If the embedded PDF does not display in your browser, please use
-      <a href="Programme_Rundown.pdf" target="_blank" rel="noopener">Open PDF</a>
-      or
-      <a href="Programme_Rundown.pdf" download>Download PDF</a>.
+    <div class="affiliation">
+      VRock Laboratory<br>
+      Department of Earth and Planetary Sciences<br>
+      The University of Hong Kong
     </div>
-  </main>
+
+    <a class="download-btn" href="programme.pdf" target="_blank">
+      Download Programme (PDF)
+    </a>
+
+    <div class="pdf-wrapper">
+      <iframe
+        src="Programme_Rundown.pdf#view=FitH&toolbar=0&navpanes=0"
+        loading="lazy">
+      </iframe>
+    </div>
+
+  </div>
 </body>
 </html>
