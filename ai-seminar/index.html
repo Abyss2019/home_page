@@ -2,55 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Advances in AI for Earth Sciences and Beyond</title>
+  <title>Advances in AI for Earth Sciences and Beyond — Programme</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
+    :root {
+      --bg: #0f1115;
+      --fg: #eaeaf0;
+      --muted: #b8bcc7;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.10);
+      --shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+
     body {
       margin: 0;
-      background: #0f1115;
-      color: #eaeaf0;
+      background: var(--bg);
+      color: var(--fg);
       font-family: -apple-system, BlinkMacSystemFont,
                    "Segoe UI", Roboto, Helvetica, Arial,
                    "Noto Sans", sans-serif;
       text-align: center;
     }
 
+    header {
+      padding: 22px 16px 10px;
+    }
+
     h1 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin: 24px 16px 20px;
+      font-size: 1.55rem;
+      font-weight: 650;
+      margin: 0 0 10px;
       line-height: 1.35;
     }
 
-    .poster-container {
-      max-width: 900px;   /* 控制 flyer 不要太大 */
-      margin: 0 auto 32px;
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 16px auto 32px;
       padding: 0 16px;
     }
 
-    img {
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 14px 0 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 0.95rem;
+      line-height: 1;
+      transition: transform 0.08s ease, background 0.08s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .pdf-frame {
       width: 100%;
-      height: auto;
-      border-radius: 6px;   /* 轻微圆角，更像正式页面 */
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      height: 82vh;              /* 桌面默认高度 */
+      border: none;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      background: #1a1c22;       /* PDF 加载前的底色 */
+    }
+
+    /* 移动端：给更多高度，减少“工具栏占屏”带来的压缩感 */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.25rem; }
+      .pdf-frame { height: 86vh; }
+    }
+
+    .fallback {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .fallback a {
+      color: var(--fg);
+      text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <h1>
+      RGC Hong Kong Postgraduate Research Seminar<br>
+      Advances in AI for Earth Sciences and Beyond
+    </h1>
+    <p class="sub">Programme & Rundown (PDF)</p>
+  </header>
 
-  <h1>
-    RGC Hong Kong Postgraduate Research Seminar<br>
-    Advances in AI for Earth Sciences and Beyond
-  </h1>
+  <main class="wrap">
+    <div class="actions">
+      <!-- 直接在新标签打开 -->
+      <a class="btn" href="Programme_Rundown.pdf" target="_blank" rel="noopener">
+        Open PDF in New Tab
+      </a>
+      <!-- 直接下载（浏览器可能仍会预览，这是正常的） -->
+      <a class="btn" href="Programme_Rundown.pdf" download>
+        Download PDF
+      </a>
+    </div>
 
-  <div class="poster-container">
-    <img
-      src="Flyer_final.png"
-      alt="AI for Earth Sciences Seminar Poster"
-    >
-  </div>
+    <iframe
+      class="pdf-frame"
+      src="Programme_Rundown.pdf"
+      title="Programme Rundown PDF"
+      loading="lazy"
+    ></iframe>
 
+    <div class="fallback">
+      If the embedded PDF does not display in your browser, please use
+      <a href="Programme_Rundown.pdf" target="_blank" rel="noopener">Open PDF</a>
+      or
+      <a href="Programme_Rundown.pdf" download>Download PDF</a>.
+    </div>
+  </main>
 </body>
 </html>
