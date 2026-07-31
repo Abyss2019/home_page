@@ -1,175 +1,234 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>VROCKLAB</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VRock Laboratory (VRockLab) — Petrology Calculators</title>
+  <meta name="description" content="VRock Laboratory (VRockLab) archives algorithms developed for petrological studies, including online calculators for apatite ('ApThermo', 'ApTimer') and Python and Matlab code for other petrological calculations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff9f4;      /* 背景色 */
+      --surface: #ffffff; /* 卡片底色 */
+      --text: #1b1b1b;    /* 正文文字 */
+      --muted: #6b7280;   /* 次级文字 */
+      --brand: #c35a27;   /* 主色：橙色 */
+      --brand-600: #a9491c;
+      /* --volc-orange:#ffe6d6; */
+      --sky-yellow:#fffae6;
+      --ml-blue:  #84b2ea;
+      --ml-blue-50:  #0e386c;
+      --ring: rgba(39, 91, 195, 0.35); /* 聚焦环颜色 */
+      --border: #e6e3df;  /* 边框色 */
+      --link: #1d4ed8;    /* 链接色 */
+      --maxw: 1100px;     /* 页面最大宽度 */
+      --radius: 16px;     /* 圆角 */
+      --shadow: 0 10px 25px rgba(27,27,27,0.06); /* 卡片阴影 */
 
-        body {
-        font-family: Arial, sans-serif;
-        margin: 20px 0;
-        padding: 0 20px; 
-        background: linear-gradient(to bottom, #FFF9CA, #ffb380);
-        color: #333;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch ;
-        padding: 20px;
-        min-height: 100vh;
+    }
 
-        }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0f0f10;          /* 径向高光起始色（更深） */
+        --surface: #161617;     /* 卡片底色 */
+        --text: #e6e6e6;        /* 正文 */
+        --muted: #a3a3a3;       /* 次级文字 */
+        --brand: #e07a3a;       /* 主色：暖橙 */
+        --brand-600: #c8642c;
+        --sky-yellow: #15130c;  /* 上部更暗的暖黄基底 */
+        /* --volc-orange: #2a1a14; 下部更暗的火山橙基底 */
 
+        /* 导航与交互 */
+        --ml-blue: rgba(132,178,234,0.18); /* hover 背景的浅蓝薄雾感 */
+        --ml-blue-50: #b7d3ff;             /* 导航文字颜色（较亮） */
+        --link: #93c5fd;                   /* 全局链接色 */
+        --ring: rgba(132,178,234,0.35);    /* 焦点环 */
 
+        /* 边框与阴影 */
+        --border: #2a2a2b;
+        --shadow: 0 10px 25px rgba(0,0,0,0.5);
+      }
+    }
 
-        header {
-            text-align: center;
-            /* margin-bottom: 30px; */
-        }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 50% -10%, var(--sky-yellow), var(--bg));
 
-        /* header h1 {
-            font-size: 2.5em;
-            font-family: 'Georgia', serif;
-            text-shadow: 2px 2px 5px #aaa;
-            color: #5a3e8a;
-        } */
+    }
+  
+    a{color:var(--link);text-decoration:none}
+    a:focus{outline:2px solid var(--ring); outline-offset:3px}
+    header{
+      -webkit-backdrop-filter:saturate(120%) blur(6px);
+      backdrop-filter:saturate(120%) blur(6px);
+      position:sticky;top:0;z-index:50;
+      border-bottom:1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 92%, transparent);
+    }
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center;min-width:0}
+    .logo{display:block;max-height:100px;width:auto}
+    .brand svg{width:36px;height:36px}
+    .titles h1 {
+      margin: 0 0 4px 0;
+      font-size: 30px;
+      font-weight: 650;
+      color: #1d4e89; 
+    }
 
-        .logo {
-        max-height: 150px;
-        width: auto;
-        }
+    .titles h2 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+      max-width: 520px;
+    }
+    nav ul{display:flex;gap:15px;list-style:none;margin:0;padding:0; }
+    nav a{display:block;padding:8px 12px;border-radius:12px;color:var(--ml-blue-50);font-weight:600;font-size:18px;white-space:nowrap}
+    nav a:hover{background:var(--ml-blue)}
 
-        header h2 {
-            font-size: 1.4em;
-            margin-top: 5px;
-            color: #212121;
-        }
-
-        .intro {
-        font-size: 1.2em;
-        line-height: 1.5;
-        text-align: justify;
-        color: #191919;
-        /* background-color: #f2f6ff; */
-        padding: 20px 30px;
-        background-color: rgba(255, 255, 255, 0.811);
-        border:  2px solid rgba(255, 224, 175, 0.857);
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(183, 161, 127, 0.504);
-        max-width: 800px;
-        margin:0 auto;
-        }
-
-        /* .indent p {
-        text-indent: 2em;
-        margin-bottom: 1em;
-        } */
-
-
-        /* 1. 让按钮行可以换行，并把间距也做成响应式 */
-        .buttons-container{
-            display:flex;
-            flex-wrap:wrap;                        /* 关键：允许换行 */
-            justify-content:center;                /* 宽度够时居中 */
-            gap:clamp(10px, 6vw, 60px);            /* 间距 10–60 px，随屏宽调 */
-            padding:20px;
-            overflow-x:auto;                       /* 只在极窄屏时才需要横向滚动 */
-            margin:0 auto;
-        }
-
-        /* 2. 让按钮随屏宽伸缩，并保持 3:2 的比例 */
-        .button{
-            width:clamp(75px, 25vw, 150px);       /* 最小 75px，最大 150px，中间 = 25vw */
-            aspect-ratio:3 / 2;                    /* 宽:高 = 3:2；自动算出高度 */
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            /* 其余原有样式保持不变 ↓ */
-            background:linear-gradient(to bottom, rgba(95, 105, 129, .5), rgba(22, 45, 80, .7));
-            border:2px solid #761F00;
-            border-radius:8px;
-            box-shadow:0 4px 8px rgba(118,31,0,.2);
-            color:#fff;
-            font-size:clamp(1rem, 1.8vw, 1.2rem);  /* 字体也自适应 */
-            font-weight:bold;
-            text-decoration:none;
-            text-shadow:1px 1px 2px #898989;
-            text-align: center;
-            transition:transform .1s, box-shadow .1s;
-        }
-
-        .button:hover{
-          transform: scale(1.05);
-          /* background: rgba(255,255,255,0.5); */
-        }
-
-
-
-        footer {
-        font-size: 1em;
-        /* margin-top: 40px; */
-        /* padding: 15px 0; */
-        text-align: center;
-        color: #000000;
-        line-height: 1.4;
-        }
-
-        footer a {
-        color: #201c1c;
-        text-decoration: none;
-        font-weight: bold;
-        }
-
-        footer a:hover {
-        text-decoration: underline;
-        }
-    </style>
+    @media (max-width:720px){
+      .topbar{align-items:flex-start;flex-direction:column;gap:12px}
+      .brand{align-items:flex-start}
+      .logo{height:72px;max-height:72px}
+      .titles h1{font-size:26px}
+      .titles h2{width:100%;font-size:14px}
+      nav{width:100%}
+      nav ul{flex-wrap:wrap;gap:8px}
+      nav a{display:block;padding:6px 8px;font-size:16px}
+    }
+    .hero{padding:56px 0 22px}
+    .hero h2{font-family: "Source Serif Pro", serif;font-weight:600;font-size:34px;margin:0 0 12px}
+    .hero p{color:var(--text);margin:8px 0 0;max-width:90%; line-height:1.4; font-weight: 400; font-size: 18px;}
+    .cards{display:grid;gap:18px;grid-template-columns:repeat(3,minmax(0,1fr));margin:26px 0 10px}
+    @media (max-width:1024px){.cards{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.cards{grid-template-columns:1fr}}
+    .card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px 18px 16px;
+      box-shadow:var(--shadow);
+      display:flex;flex-direction:column;justify-content:space-between;min-height:160px
+    }
+    .card h3{margin:8px 0 4px;font-size:20px}
+    .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.5; margin-top: 0.4em; margin-bottom: 0.2em; font-weight: 400;}
+    .btn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 14px;border-radius:12px;border:1px solid var(--brand);background:var(--brand);color:white;font-weight:600;cursor:pointer}
+    .btn:hover{background:var(--brand-600);border-color:var(--brand-600)}
+    .note{margin:24px 0 12px;padding:14px;border:1px dashed var(--border);border-radius:14px;background:color-mix(in oklab, var(--surface) 94%, transparent)}
+    .foot{
+      border-top:1px solid var(--border);margin-top:36px
+    }
+    footer .cols{display:grid;grid-template-columns:2fr 1fr;gap:20px;padding:18px 0}
+    
+    @media (max-width:720px){footer .cols{grid-template-columns:1fr}}
+    .muted{color:var(--muted); margin-top: 0.2em; margin-bottom: 0.4em;}
+  </style>
 </head>
 <body>
-    <header>
+  <header>
+    <div class="container topbar" role="navigation" aria-label="Main">
+      <div class="brand">
         <a href="https://vrocklab.hku.hk">
-        <img src="./static/images/VRockLab_logo.png" alt="VROCKLAB Logo" class="logo">
+          <img src="./static/images/VRockLab_logo.png" alt="VRock Laboratory (VRockLab) logo" class="logo" height="100">
         </a>
-        <!-- <h1>VROCKLAB</h1> -->
-        <h2>Department of Earth Sciences, The University of Hong Kong</h2>
-    </header>
+        <div class="titles">
+          <h1>VRock Laboratory</h1>
+          <h2>Department of Earth &amp; Planetary Sciences, The University of Hong Kong</h2>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <!-- <li><a href="#about">About</a></li> -->
+          <li><a href="https://vrocklab.hku.hk/python-code/">Python &amp; Matlab Code</a></li>
+          <li><a href="https://vrocklab.hku.hk/Collaborators/">Collaborators</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
 
-    <div class="intro indent">
-    <p>Welcome to the VRockLab calculation website!</p>
-    <p>This website archives algorithms we developed for petrological studies, including a few online calculators for apatite ("ApThermo", "ApTimer") and python codes for conducting other calculations ("Python code").</p>
-    <p>By clicking the buttons below, you will be directed to a new page for calculations. Please cite these software/codes when publishing your work.</p>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <p><strong>Welcome to the VRock Laboratory (VRockLab) calculation website!</strong></p>
+      <p>This website archives algorithms we developed for petrological studies, including a few online calculators for apatite ("ApThermo", "ApTimer") and Python &amp; Matlab codes for conducting other calculations ("Python &amp; Matlab code").</p>
+      <p>By clicking the buttons below, you will be directed to a new page for calculations. Please cite these software/codes when publishing your work.</p>
+    </section>
+
+    <section aria-label="Tools" class="cards">
+      <article class="card">
+        <div>
+          <h3>ApThermo</h3>
+          <p>This model can be used to calculate the abundances of water in silicate melts using concentrations of volatiles (F, Cl, H<sub>2</sub>O) in apatite. </p>
+          <!-- <p>and the equations for the exchange coefficients (K<sub>D</sub>) for OH-Cl, OH-F, and Cl-F proposed by:</p> -->
+          <!-- <p><i>Li W. and Costa F. (2020). A thermodynamic model for F-Cl-OH partitioning between silicate melts and apatite including non-ideal mixing with application to constraining melt volatile budgets. Geochimica et Cosmochimica Acta 269, 203-222. DOI: 10.1016/j.gca.2019.10.035</i></p> -->
+        </div>
+        <a class="btn" href="https://vrocklab.hku.hk/ApThermo/" target="_blank" rel="noopener" aria-label="Open ApThermo">Open</a>
+      </article>
+      <article class="card">
+        <div>
+          <h3>ApTimer</h3>
+          <p>ApTimer is developed for estimating the timescale of multicomponent (F-Cl-OH) diffusion in apatite, and it can be applied to natural apatite that is zoned of F/Cl/OH. The calculated diffusion times can be related to magmatic processes such as magma ascent.</p>
+          <!-- <p>
+                Detailed experimental and computation methods as well as the model applications can be found in the
+                paper below:<br>
+                <i style="font-size: 14px;">Li, W., Chakraborty, S., Nagashima, K, & Costa, F (2020a). Multicomponent
+                    diffusion of F, Cl, OH in
+                    apatite with
+                    application to magma ascent rates. Earth and Planetary Science Letters. 550, 116545.
+                    (DOI:10.1016/j.epsl.2020.116545)</i>
+            </p> -->
+        </div>
+        <a class="btn" href="https://vrocklab.hku.hk/ApTimer/" target="_blank" rel="noopener" aria-label="Open ApTimer">Open</a>
+      </article>
+      <article class="card">
+        <div>
+          <h3>Python &amp; Matlab Code</h3>
+          <p>This page compiles the Python and Matlab codes we developed for petrological studies.</p>
+        </div>
+        <a class="btn" href="https://vrocklab.hku.hk/python-code/" target="_blank" rel="noopener" aria-label="Open Python &amp; Matlab Code">Browse</a>
+      </article>
+      <!-- <article class="card">
+        <div>
+          <h3>Collaborators' Tools</h3>
+          <p>External tools and software from our collaborators. Curated and versioned.</p>
+        </div>
+        <a class="btn" href="collaborators.html" aria-label="Go to Collaborators page">Explore</a>
+      </article> -->
+    </section>
+
+    <div class="note" role="note">
+      Find out more about <strong>VRock Laboratory (VRockLab)</strong>: <a href="https://weiranli.wixsite.com/alex" target="_blank" rel="noopener">https://weiranli.wixsite.com/alex</a>
     </div>
 
-
-    <div class="buttons-container">
-        <a href="https://vrocklab.hku.hk/ApThermo/" target="_blank" class="button">ApThermo</a>
-        <a href="https://vrocklab.hku.hk/ApTimer/" target="_blank" class="button">ApTimer</a>
-        <a href="https://vrocklab.hku.hk/python-code/" target="_blank" class="button">Python Code</a>
-    </div>
-    <p  style="position: relative; padding-bottom: 30px; text-align: center;">
-        Find out more about the VRockLab: 
-        <a href="https://weiranli.wixsite.com/alex" target="_blank">https://weiranli.wixsite.com/alex</a>
-    </p>
-
-
-    <hr style="width: 60%; margin-top: 40px; border: none; border-top: 1px dashed #762000; ">
-    <footer style="position: relative; padding-bottom: 30px; align-items: center;">
-        <p>
-            Contact person: <strong>Prof. Weiran Li</strong> (E-mail: 
-            <a href="mailto:weiranli@hku.hk">weiranli@hku.hk</a>)<br>
-            Department of Earth Sciences, The University of Hong Kong
-        </p>
-
-    </footer>
-
+    <footer class="foot" id="contact">
+      <div class="cols">
+        <div>
+          <p class="muted">Contact person: <strong>Prof. Weiran Li</strong> (E-mail: 
+            <a href="mailto:weiranli@hku.hk">weiranli@hku.hk</a>)<br></p>
+          <p class="muted">Department of Earth &amp; Planetary Sciences, The University of Hong Kong</p>
+        </div>
+      </div>
     <div style="position: fixed; bottom: 10px; left: 10px; font-size: 1em; color: #762000; z-index: 1000;">
     Visitors: <span id="visitor-count">Loading...</span>
     </div>
+    </footer>
+  </main>
 
-    <script>
-    fetch('/api/visit.php')  // ✅ 保持路径一致
+  
+
+  <script>
+    fetch('/api/visit.php')  
         .then(res => res.json())
         .then(data => {
         document.getElementById('visitor-count').innerText = data.visits;
@@ -178,7 +237,6 @@
         document.getElementById('visitor-count').innerText = "Unavailable";
         console.error(err);
         });
-    </script>
+  </script>
 </body>
-
 </html>
